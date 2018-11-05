@@ -1,0 +1,43 @@
+﻿@model singleOrMultipleDropdown.Models.SelectedEmployees
+@{
+    ViewBag.Title = "AddorEdit";
+}
+
+<h2>AddorEdit</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal'">
+        @Html.HiddenFor(x=>x.Id)
+
+        <div class="form-group">
+            <label>Select Employee</label>
+            @*//this line  of Code will creat the Normal Dropdown*@
+
+            @*@Html.DropDownListFor(x=>x.SelectedEmployeeID,new SelectList(Model.EmployeeCollection, "Id", "Name"),new { id="normalDropDown"})*@ 
+
+            @Html.ListBoxFor(x=>x.SelectedEmployeeArray, new MultiSelectList(Model.EmployeeCollection,"Id","Name"),new {id="multiSelectList", @class="form-control"})
+
+            <input type="submit" value="Send" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+
+        $(function () {
+            //$("#normalDropDown").chosen(); 
+
+
+            //if you want to remove the search form the dropdown
+            $("#normalDropDown").chosen({
+                disable_search_threshold: 8
+            }); 
+
+            $("#multiSelectList").chosen({
+            width:"100%"});
+        });
+    </script>
+    
+    }
