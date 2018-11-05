@@ -16,6 +16,8 @@
 
             @*@Html.DropDownListFor(x=>x.SelectedEmployeeID,new SelectList(Model.EmployeeCollection, "Id", "Name"),new { id="normalDropDown"})*@ 
 
+
+            @*Code for Multi selection Options*@ 
             @Html.ListBoxFor(x=>x.SelectedEmployeeArray, new MultiSelectList(Model.EmployeeCollection,"Id","Name"),new {id="multiSelectList", @class="form-control"})
 
             <input type="submit" value="Send" class="btn btn-primary" />
@@ -35,6 +37,8 @@
                 disable_search_threshold: 8
             }); 
 
+
+            //Jquery Code for multi selection Dropdown
             $("#multiSelectList").chosen({
             width:"100%"});
         });
